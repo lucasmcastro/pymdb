@@ -1,0 +1,9 @@
+<h2>Alterando Filme</h2>
+
+<form action="/movies/update/{{ movie.id }}" method="post">
+	<label for="name"></label>
+	<input type="text" name="name" value="{{ movie.name }}"><br>
+	<label for="rating"></label>
+	<input type="text" name="rating" value="{{ movie.rating }}"><br>
+	<input type="submit"><a href='/'>cancelar</a>
+</form>
