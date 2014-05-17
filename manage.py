@@ -1,6 +1,19 @@
-from flask import render_template, redirect, request
-from pymdb import app, db
-from pymdb.models import Movie
+from flask import Flask, render_template, redirect, request
+from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
+
+from models import *
+
+app = Flask(__name__)
+app.debug = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies.db'
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 
 @app.route('/')
@@ -46,6 +59,4 @@ def remove_movie(id):
 
 
 if __name__ == '__main__':
-    db.create_all()
-    app.debug = True
-    app.run()
+    manager.run()

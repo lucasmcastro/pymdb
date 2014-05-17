@@ -1,4 +1,4 @@
-from pymdb import db
+from manage import db
 
 
 class Movie(db.Model):
