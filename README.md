@@ -6,5 +6,5 @@ $ cd pymdb
 $ pip install -r requirements.txt
 $ python manage.py db upgrade
 $ python manage.py runserver
-$ open localhost:5000
+$ open http://localhost:5000
 ```
